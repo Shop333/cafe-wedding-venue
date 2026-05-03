@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+
+/* Tambahkan sedikit font custom agar lebih mewah */
+@layer base {
+    html {
+        font-family: 'Inter', system-ui, sans-serif;
+    }
+}
