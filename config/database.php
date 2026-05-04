@@ -10,7 +10,6 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    // Mengambil dari DB_CONNECTION di Railway, kalau kosong balik ke mysql (bukan sqlite)
     'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
@@ -31,12 +30,13 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            // Komentari baris URL ini agar Laravel terpaksa pakai Host, Port, dll secara terpisah
-            // 'url' => env('DB_URL'), 
-            'host' => env('DB_HOST', '127.0.0.1'),
+            // Kita matikan URL agar tidak bentrok dengan host/port manual
+            'url' => null, 
+            'host' => env('DB_HOST', 'mysql.railway.internal'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
+            // Kita set default ke 'railway' karena itu standar nama DB di Railway
+            'database' => env('DB_DATABASE', 'railway'),
+            'username' => env('DB_USERNAME', 'root'),
             'password' => env('DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
